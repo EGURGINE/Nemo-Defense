@@ -46,6 +46,20 @@ public class Spawner : MonoBehaviour
         CNT += Time.deltaTime;
     }
 
+    public void Push(GameObject obj)
+    {
+        enemys.Push(obj);
+        obj.transform.parent = objs.transform;
+        obj.SetActive(false);
+    }
+
+    private void Pop()
+    {
+        GameObject obj = enemys.Pop();
+        obj.transform.parent = null;
+        obj.SetActive(true);
+    }
+
     private void Spawn()
     {
 
