@@ -13,6 +13,15 @@ public class Spawner : MonoBehaviour
 
     public bool isSpawn;
 
+    private int spRadius = 3;
+    private float posX;
+    private float posY;
+
+    [Header("Àû ½ºÅÝ")]
+    public float enemy_dmg;
+    public float enemy_hp;
+    public float enemy_spd;
+
     [SerializeField] private float maxCnt;
     private float cnt;
     private float CNT
@@ -29,9 +38,9 @@ public class Spawner : MonoBehaviour
         for (int i = 0; i < objNum; i++)
         {
             GameObject obj = Instantiate(enemyObj);
-            obj.transform.parent = objs.transform;
-            enemys.Push(obj);
+            Push(obj);
         }
+        isSpawn = true;
     }
 
     private void Update()
@@ -55,13 +64,19 @@ public class Spawner : MonoBehaviour
 
     private void Pop()
     {
+        float angle = Random.Range(0, 360);
+        posX = Mathf.Cos(angle) * spRadius;
+        posY = Mathf.Sin(angle) * spRadius;
+
         GameObject obj = enemys.Pop();
         obj.transform.parent = null;
+        obj.transform.position = new Vector3(posX ,posY , 0);
+        obj.GetComponent<Enemy>().StartSet(enemy_dmg, enemy_hp, enemy_spd);
         obj.SetActive(true);
     }
 
     private void Spawn()
     {
-
+        Pop();
     }
 }
