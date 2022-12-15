@@ -6,6 +6,7 @@ public class Enemy : MonoBehaviour
 {
     public State state;
 
+    private float spd;
     private float HP
     {
         get { return state.hp; }
@@ -18,6 +19,13 @@ public class Enemy : MonoBehaviour
     }
 
     private Rigidbody2D rb => GetComponent<Rigidbody2D>();
+
+    public void StartSet(float _dmg, float _hp, float _spd)
+    {
+        state.dmg = _dmg;
+        HP = _hp;
+        spd = _spd;
+    }
 
     private void Die()
     {
