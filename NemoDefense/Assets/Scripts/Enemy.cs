@@ -6,7 +6,7 @@ public class Enemy : MonoBehaviour
 {
     public State state;
 
-    Transform target => GameObject.Find("Player").gameObject.transform;
+    Transform target => Player.Instance.gameObject.transform;
 
     private bool isMove;
 
@@ -41,8 +41,9 @@ public class Enemy : MonoBehaviour
 
     private void Die()
     {
+        GameManager.Instance.Money += Player.Instance.state.killMoney;
         isMove = false;
-        print("die");
+        Spawner.Instance.Push(this.gameObject);
     }
 
     private void OnTriggerEnter2D(Collider2D collision)

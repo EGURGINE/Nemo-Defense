@@ -256,8 +256,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   state:
-    dmg: 0
-    shotSpd: 0
+    dmg: 5
+    shotSpd: 1
     hp: 0
     regeneration: 0
     killMoney: 0
@@ -463,7 +463,7 @@ MonoBehaviour:
   objNum: 15
   isSpawn: 0
   enemy_dmg: 1
-  enemy_hp: 10
+  enemy_hp: 1
   enemy_spd: 0.5
   maxCnt: 3
 --- !u!4 &1112061957
@@ -581,6 +581,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Player: {fileID: 183322299}
+  enemyList: []
   shotPos: {fileID: 973982340}
   bulletObj: {fileID: 741911175556519989, guid: d481b5e4a0732b848ba07ac6db04f509, type: 3}
 --- !u!50 &1679173590

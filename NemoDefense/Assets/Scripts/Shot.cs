@@ -7,12 +7,11 @@ using static UnityEngine.GraphicsBuffer;
 
 public class Shot : MonoBehaviour
 {
-    [SerializeField] private Player Player;
-    List<GameObject> enemyList = new List<GameObject>();
+    [SerializeField] private List<GameObject> enemyList = new List<GameObject>();
     private GameObject target;
 
     private float bulletCnt = 0;
-    private float bulletShotSpd => Player.state.shotSpd;
+    private float bulletShotSpd => Player.Instance.state.shotSpd;
 
     private bool isShot = false;
 
@@ -36,19 +35,18 @@ public class Shot : MonoBehaviour
 
     private void ShotBullet()
     {
-        if (enemyList.FirstOrDefault() != null)
+        if (enemyList.Count > 0)
         {
             shotPos.LookAt(target.transform.position);
             BulletSet();
         }
-        else bulletCnt = bulletShotSpd;
     }
 
     private void BulletSet()
     {
         Bullet bullet = Instantiate(bulletObj);
         bullet.transform.position = shotPos.position;
-        bullet.SetBullet(Player.state.dmg, bulletSpd, shotPos.forward);
+        bullet.SetBullet(Player.Instance.state.dmg, bulletSpd, shotPos.forward);
     }
 
     private GameObject DistanceEnemy()
@@ -78,7 +76,7 @@ public class Shot : MonoBehaviour
         if (collision.CompareTag("Enemy"))
         {
             enemyList.Remove(collision.gameObject);
-            if(enemyList.FirstOrDefault() == null) isShot = false;
+            if(enemyList.Count < 1) isShot = false;
         }
     }
 }

@@ -19,4 +19,12 @@ public class Bullet : MonoBehaviour
         spd = _spd;
         dir = _dir;
     }
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.CompareTag("Enemy"))
+        {
+            Destroy(gameObject);
+        }
+    }
 }
