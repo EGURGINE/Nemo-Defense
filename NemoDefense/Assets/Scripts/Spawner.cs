@@ -13,7 +13,7 @@ public class Spawner : Singleton<Spawner>
 
     public bool isSpawn;
 
-    private int spRadius = 3;
+    private int spRadius = 5;
     private float posX;
     private float posY;
 
@@ -64,9 +64,10 @@ public class Spawner : Singleton<Spawner>
 
     private void Pop()
     {
+        Vector3 playerPos = Player.Instance.gameObject.transform.position;
         float angle = Random.Range(0, 360);
-        posX = Mathf.Cos(angle) * spRadius;
-        posY = Mathf.Sin(angle) * spRadius;
+        posX = playerPos.x + Mathf.Cos(angle) * spRadius;
+        posY = playerPos.y + Mathf.Sin(angle) * spRadius;
 
         GameObject obj = enemys.Pop();
         obj.transform.parent = null;

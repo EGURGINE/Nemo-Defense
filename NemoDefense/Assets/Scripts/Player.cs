@@ -2,22 +2,20 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+using TMPro;
+using UnityEngine.UI;
 [Serializable]
 public struct State
 {
     [Header("ATK")]
-
     public float dmg;
     public float shotSpd;
 
     [Header("DEF")]
-
     public float hp;
     public float regeneration;
 
     [Header("UTY")]
-
     public float killMoney;
     public int waveMoney;
 }
@@ -27,7 +25,11 @@ public class Player : Singleton<Player>
 {
     public State state;
 
-    private float maxHp => state.hp;
+    [SerializeField] private TextMeshProUGUI hpTxt;
+    [SerializeField] private Image hpImg;
+
+    public float MaxHP;
+
     public float HP 
     { 
         get { return state.hp; }
@@ -35,14 +37,27 @@ public class Player : Singleton<Player>
         {
             state.hp = value;
 
+            hpTxt.text = $"{state.hp}/{MaxHP}";
+            hpImg.fillAmount = state.hp / MaxHP;
+
             if (state.hp <= 0) Die();
         }
     }
 
+    [SerializeField] private TextMeshProUGUI dmgTxt;
+    public float DMG
+    {
+        get { return state.dmg; }
+        set 
+        {
+            state.dmg = value;
+            dmgTxt.text = state.dmg.ToString();
+        }
+    }
 
     public void StartSET()
     {
-        HP = maxHp;
+        HP = state.hp;
     }
 
     public void Die()

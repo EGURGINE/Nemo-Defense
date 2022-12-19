@@ -11,4 +11,8 @@ public class GameManager : Singleton<GameManager>
         set { money = value; }
     }
 
+    private void Start()
+    {
+        Player.Instance.StartSET();
+    }
 }

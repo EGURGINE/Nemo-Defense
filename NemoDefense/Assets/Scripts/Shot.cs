@@ -22,6 +22,7 @@ public class Shot : MonoBehaviour
 
     private void Update()
     {
+        bulletCnt += Time.deltaTime;
         
         if (isShot == false) return;
         
@@ -30,7 +31,6 @@ public class Shot : MonoBehaviour
             bulletCnt = 0;
             ShotBullet();
         }
-        bulletCnt += Time.deltaTime;
     }
 
     private void ShotBullet()
