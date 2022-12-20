@@ -15,8 +15,6 @@ public class AbilityUpgrade : MonoBehaviour
 {
     UpgradeType type = UpgradeType.ATK;
 
-    [SerializeField] private Button[] typeBtn = new Button[3];
-
     [SerializeField] private Button leftBtn; 
     [SerializeField] private Button rightBtn;
 
@@ -31,14 +29,13 @@ public class AbilityUpgrade : MonoBehaviour
         switch (type)
         {
             case UpgradeType.ATK:
+
                 break;
             case UpgradeType.DEF:
+
                 break;
             case UpgradeType.UTY:
-                break;
-            case UpgradeType.END:
-                break;
-            default:
+
                 break;
         }
     }
@@ -47,14 +44,29 @@ public class AbilityUpgrade : MonoBehaviour
         switch (type)
         {
             case UpgradeType.ATK:
+
                 break;
             case UpgradeType.DEF:
+
                 break;
             case UpgradeType.UTY:
+
                 break;
-            case UpgradeType.END:
+        }
+    }
+
+    public void TypeChange(UpgradeType _type)
+    {
+        switch (_type)
+        {
+            case UpgradeType.ATK:
+                type = UpgradeType.ATK;
                 break;
-            default:
+            case UpgradeType.DEF:
+                type = UpgradeType.DEF;
+                break;
+            case UpgradeType.UTY:
+                type = UpgradeType.UTY;
                 break;
         }
     }

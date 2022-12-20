@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 
 public class Spawner : Singleton<Spawner>
@@ -10,17 +11,19 @@ public class Spawner : Singleton<Spawner>
 
     [SerializeField] private Stack<GameObject> enemys = new Stack<GameObject>();
 
-
-    public bool isSpawn;
+    private bool isSpawn => GameManager.Instance.isSpawnTrun;
 
     private int spRadius = 5;
     private float posX;
     private float posY;
 
     [Header("Àû ½ºÅÝ")]
-    public float enemy_dmg;
-    public float enemy_hp;
-    public float enemy_spd;
+    private float enemy_dmg = 1;
+    private float enemy_hp = 5;
+    private float enemy_spd = 1;
+
+    [SerializeField] private TextMeshProUGUI waveEnemyDmgTxt;
+    [SerializeField] private TextMeshProUGUI waveEnemyHPTxt;
 
     [SerializeField] private float maxCnt;
     private float cnt;
@@ -29,25 +32,25 @@ public class Spawner : Singleton<Spawner>
         get { return cnt; }
         set 
         { 
-            cnt = value; 
+            cnt = value;
         }
     }
 
     private void Start()
     {
+        TextSet();
         for (int i = 0; i < objNum; i++)
         {
             GameObject obj = Instantiate(enemyObj);
             Push(obj);
         }
-        isSpawn = true;
     }
 
     private void Update()
     {
         if (isSpawn == false) return;
 
-        if (CNT >=maxCnt)
+        if (CNT >= maxCnt)
         {
             CNT = 0;
             Spawn();
@@ -80,4 +83,18 @@ public class Spawner : Singleton<Spawner>
     {
         Pop();
     }
+
+    public void EnemyUp()
+    {
+        enemy_dmg += 0.1f;
+        enemy_hp += 0.5f;
+        TextSet();
+    }
+
+    private void TextSet() 
+    {
+        waveEnemyDmgTxt.text = enemy_dmg.ToString();
+        waveEnemyHPTxt.text = enemy_hp.ToString();
+    }
+
 }

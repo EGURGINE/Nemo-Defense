@@ -22,8 +22,6 @@ public class Enemy : MonoBehaviour
         }
     }
 
-    private Rigidbody2D rb => GetComponent<Rigidbody2D>();
-
     private void Update()
     {
         if (isMove == false) return;

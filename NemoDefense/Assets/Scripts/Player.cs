@@ -57,7 +57,7 @@ public class Player : Singleton<Player>
 
     public void StartSET()
     {
-        HP = state.hp;
+        HP = MaxHP;
     }
 
     public void Die()
