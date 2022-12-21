@@ -40,7 +40,11 @@ public class Player : Singleton<Player>
             hpTxt.text = $"{state.hp}/{MaxHP}";
             hpImg.fillAmount = state.hp / MaxHP;
 
-            if (state.hp <= 0) Die();
+            if (state.hp <= 0)
+            {
+                state.hp = 0;
+                Die();
+            }
         }
     }
 
