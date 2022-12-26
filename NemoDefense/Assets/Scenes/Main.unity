@@ -1430,7 +1430,21 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   leftBtn: {fileID: 1506911768}
+  leftBtnValues:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  leftInformation: {fileID: 0}
+  leftValue: {fileID: 0}
+  leftPrice: {fileID: 0}
   rightBtn: {fileID: 764851352}
+  rightBtnValues:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  rightInformation: {fileID: 0}
+  rightValue: {fileID: 0}
+  rightPrice: {fileID: 0}
 --- !u!1 &335493411
 GameObject:
   m_ObjectHideFlags: 0

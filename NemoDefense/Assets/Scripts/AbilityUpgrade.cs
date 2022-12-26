@@ -12,8 +12,9 @@ public enum UpgradeType
     UTY,
     END
 }
-[Serializable]
-public class UpgradeBtn
+
+[CreateAssetMenu(fileName = "Btn Datas", menuName = "Scriptable Object/Btn Data", order = int.MaxValue)]
+public class UpgradeBtn : ScriptableObject
 {
     public string Information;
     public float Value;
@@ -25,12 +26,14 @@ public class AbilityUpgrade : MonoBehaviour
     UpgradeType type = UpgradeType.ATK;
 
     [SerializeField] private Button leftBtn;
+    [SerializeField] private UpgradeBtn leftBtnData;
     [SerializeField] UpgradeBtn[] leftBtnValues = new UpgradeBtn[3];
     [SerializeField] private TextMeshProUGUI leftInformation;
     [SerializeField] private TextMeshProUGUI leftValue;
     [SerializeField] private TextMeshProUGUI leftPrice;
 
     [SerializeField] private Button rightBtn;
+    [SerializeField] private UpgradeBtn rightBtnData;
     [SerializeField] UpgradeBtn[] rightBtnValues = new UpgradeBtn[3];
     [SerializeField] private TextMeshProUGUI rightInformation;
     [SerializeField] private TextMeshProUGUI rightValue;
@@ -44,38 +47,39 @@ public class AbilityUpgrade : MonoBehaviour
 
     private void LeftBtnSet() 
     {
-        switch (type)
-        {
-            case UpgradeType.ATK:
+        if(GameManager.Instance.Money < leftBtnData.Price) return;
 
-                break;
-            case UpgradeType.DEF:
 
-                break;
-            case UpgradeType.UTY:
 
-                break;
-        }
+        GameManager.Instance.Money -= leftBtnData.Price;
+
+        leftBtnData.Price += 5f;
+        WndSet();
     }
     private void RightBtnSet() 
     {
-        switch (type)
-        {
-            case UpgradeType.ATK:
+        if(GameManager.Instance.Money < rightBtnData.Price) return;
 
-                break;
-            case UpgradeType.DEF:
 
-                break;
-            case UpgradeType.UTY:
+        GameManager.Instance.Money -= rightBtnData.Price;
 
-                break;
-        }
+        rightBtnData.Price += 5f;
+        WndSet();
     }
     private void WndSet()
     {
         int typeNum = ((int)type);
 
+        leftBtnData = leftBtnValues[typeNum];
+        rightBtnData = rightBtnValues[typeNum];
+
+        leftInformation.text = leftBtnValues[typeNum].Information.ToString();
+        leftValue.text = leftBtnValues[typeNum].Value.ToString();
+        leftPrice.text = leftBtnValues[typeNum].Price.ToString();
+        
+        rightInformation.text = rightBtnValues[typeNum].Information.ToString();
+        rightValue.text =  rightBtnValues[typeNum].Value.ToString();
+        rightPrice.text =  rightBtnValues[typeNum].Price.ToString();
 
     }
     public void TypeChange(float num)
