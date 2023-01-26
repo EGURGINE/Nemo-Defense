@@ -39,7 +39,7 @@ public class Enemy : MonoBehaviour
 
     private void Die()
     {
-        GameManager.Instance.Money += Player.Instance.state.killMoney;
+        GameManager.Instance.Money += Player.Instance.state.moneyBonus;
         isMove = false;
         Spawner.Instance.Push(this.gameObject);
     }

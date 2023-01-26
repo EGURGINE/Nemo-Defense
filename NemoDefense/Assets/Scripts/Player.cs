@@ -16,8 +16,8 @@ public struct State
     public float regeneration;
 
     [Header("UTY")]
-    public float killMoney;
-    public int waveMoney;
+    public float moneyBonus;
+    public float waveMoney;
 }
 
 
@@ -28,7 +28,7 @@ public class Player : Singleton<Player>
     [SerializeField] private TextMeshProUGUI hpTxt;
     [SerializeField] private Image hpImg;
 
-    public float MaxHP;
+    private float hp;
 
     public float HP 
     { 
@@ -37,12 +37,12 @@ public class Player : Singleton<Player>
         {
             state.hp = value;
 
-            hpTxt.text = $"{state.hp}/{MaxHP}";
-            hpImg.fillAmount = state.hp / MaxHP;
+            hpTxt.text = $"{hp}/{state.hp}";
+            hpImg.fillAmount = hp / state.hp;
 
-            if (state.hp <= 0)
+            if (hp <= 0)
             {
-                state.hp = 0;
+                hp = 0;
                 Die();
             }
         }
@@ -59,9 +59,15 @@ public class Player : Singleton<Player>
         }
     }
 
+    private void Start()
+    {
+        StartSET();
+    }
+
+
     public void StartSET()
     {
-        HP = MaxHP;
+        HP = state.hp;
     }
 
     public void Die()

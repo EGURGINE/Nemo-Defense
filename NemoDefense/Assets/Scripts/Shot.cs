@@ -11,7 +11,7 @@ public class Shot : MonoBehaviour
     private GameObject target;
 
     private float bulletCnt = 0;
-    private float bulletShotSpd => Player.Instance.state.shotSpd;
+    private float bulletShotSpd = 1;
 
     private bool isShot = false;
 
@@ -25,7 +25,9 @@ public class Shot : MonoBehaviour
         bulletCnt += Time.deltaTime;
         
         if (isShot == false) return;
-        
+
+        bulletShotSpd = 1 / Player.Instance.state.shotSpd;
+
         if (bulletCnt >= bulletShotSpd)
         {
             bulletCnt = 0;

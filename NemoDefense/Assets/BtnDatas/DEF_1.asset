@@ -9,9 +9,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 0}
-  m_Name: LeftDEF
-  m_EditorClassIdentifier: Assembly-CSharp::UpgradeBtn
-  Information: 
-  Value: 0
-  Price: 0
+  m_Script: {fileID: 11500000, guid: 51442bdad8e81d042aa81e7df3188c18, type: 3}
+  m_Name: DEF_1
+  m_EditorClassIdentifier: 
+  Information: HP
+  Value: 10
+  Price: 5

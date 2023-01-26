@@ -1430,21 +1430,23 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   leftBtn: {fileID: 1506911768}
+  leftBtnData: {fileID: 11400000, guid: bed30b3dc0fde4449b14a3a72b974b16, type: 2}
   leftBtnValues:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  leftInformation: {fileID: 0}
-  leftValue: {fileID: 0}
-  leftPrice: {fileID: 0}
+  - {fileID: 11400000, guid: bed30b3dc0fde4449b14a3a72b974b16, type: 2}
+  - {fileID: 11400000, guid: 2a1f019354fb66b45896e364d4b30e2d, type: 2}
+  - {fileID: 11400000, guid: 8057c551c42d5b34fbee737b1169e9a2, type: 2}
+  leftInformation: {fileID: 1661788394}
+  leftValue: {fileID: 412338233}
+  leftPrice: {fileID: 1344337929}
   rightBtn: {fileID: 764851352}
+  rightBtnData: {fileID: 11400000, guid: 8d819ff2808bbeb478e0d0b84a777f2c, type: 2}
   rightBtnValues:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  rightInformation: {fileID: 0}
-  rightValue: {fileID: 0}
-  rightPrice: {fileID: 0}
+  - {fileID: 11400000, guid: 8d819ff2808bbeb478e0d0b84a777f2c, type: 2}
+  - {fileID: 11400000, guid: dbb88d3c5c6c77447a8d806d2ff76647, type: 2}
+  - {fileID: 11400000, guid: 34150ed914d27bf44ab99c3e2422e002, type: 2}
+  rightInformation: {fileID: 1414463386}
+  rightValue: {fileID: 387996976}
+  rightPrice: {fileID: 612968523}
 --- !u!1 &335493411
 GameObject:
   m_ObjectHideFlags: 0
