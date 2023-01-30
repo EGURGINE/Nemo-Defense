@@ -25,17 +25,23 @@ public class Player : Singleton<Player>
 {
     public State state;
 
+    [SerializeField] private TextMeshProUGUI dmgTxt;
+
     [SerializeField] private TextMeshProUGUI hpTxt;
     [SerializeField] private Image hpImg;
+
+    public Coroutine regenerationCoroutine;
 
     private float hp;
 
     public float HP 
     { 
-        get { return state.hp; }
+        get { return hp; }
         set
         {
-            state.hp = value;
+            hp = value;
+
+            if(hp > state.hp) hp = state.hp;
 
             hpTxt.text = $"{hp}/{state.hp}";
             hpImg.fillAmount = hp / state.hp;
@@ -48,7 +54,6 @@ public class Player : Singleton<Player>
         }
     }
 
-    [SerializeField] private TextMeshProUGUI dmgTxt;
     public float DMG
     {
         get { return state.dmg; }
@@ -64,10 +69,18 @@ public class Player : Singleton<Player>
         StartSET();
     }
 
+    public IEnumerator Regeneration()
+    {
+        yield return new WaitForSeconds(1f);
+        HP += state.regeneration;
+        regenerationCoroutine = StartCoroutine(Regeneration());
+    }
 
     public void StartSET()
     {
         HP = state.hp;
+
+        if (state.regeneration > 0) StartCoroutine(Regeneration());
     }
 
     public void Die()

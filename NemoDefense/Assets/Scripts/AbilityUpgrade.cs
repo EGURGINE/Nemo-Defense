@@ -35,6 +35,12 @@ public class AbilityUpgrade : MonoBehaviour
     [SerializeField] private TextMeshProUGUI rightValue;
     [SerializeField] private TextMeshProUGUI rightPrice;
 
+    [Space(10f)]
+
+    [SerializeField] private Image upgradeTypeInformationBG;
+    [SerializeField] private Color[] upgradeTypeInformationBGColor;
+    [SerializeField] private TextMeshProUGUI upgradeTypeInformationTxt;
+
     private void Awake()
     {
         leftBtn.onClick.AddListener(() => LeftBtnSet());
@@ -47,12 +53,12 @@ public class AbilityUpgrade : MonoBehaviour
 
     private void StartSet()
     {
-        Player.Instance.state.dmg = leftBtnData.Value;
-        Player.Instance.state.hp = leftBtnData.Value;
-        Player.Instance.state.moneyBonus = leftBtnData.Value;
-        Player.Instance.state.shotSpd = rightBtnData.Value;
-        Player.Instance.state.regeneration = rightBtnData.Value;
-        Player.Instance.state.waveMoney = rightBtnData.Value;
+        Player.Instance.state.dmg = leftBtnValues[0].Value;
+        Player.Instance.state.hp = leftBtnValues[1].Value;
+        Player.Instance.state.moneyBonus = leftBtnValues[2].Value;
+        Player.Instance.state.shotSpd = rightBtnValues[0].Value;
+        Player.Instance.state.regeneration = rightBtnValues[1].Value;
+        Player.Instance.state.waveMoney = rightBtnValues[2].Value;
     }
 
     private void LeftBtnSet() 
@@ -97,6 +103,9 @@ public class AbilityUpgrade : MonoBehaviour
                 break;
             case UpgradeType.DEF:
                 Player.Instance.state.regeneration = rightBtnData.Value;
+
+                if (Player.Instance.regenerationCoroutine == null)
+                    Player.Instance.regenerationCoroutine = StartCoroutine(Player.Instance.Regeneration());
                 break;
             case UpgradeType.UTY:
                 Player.Instance.state.waveMoney = rightBtnData.Value;
@@ -108,6 +117,9 @@ public class AbilityUpgrade : MonoBehaviour
     private void WndSet()
     {
         int typeNum = ((int)type);
+
+        upgradeTypeInformationTxt.text = $"{type} UPGRADE";
+        upgradeTypeInformationBG.color = upgradeTypeInformationBGColor[typeNum];
 
         leftBtnData = leftBtnValues[typeNum];
         rightBtnData = rightBtnValues[typeNum];

@@ -13,5 +13,5 @@ MonoBehaviour:
   m_Name: ATK_1
   m_EditorClassIdentifier: 
   Information: DMG
-  Value: 1
-  Price: 5
+  Value: 8
+  Price: 71.875

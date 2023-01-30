@@ -1032,12 +1032,11 @@ MonoBehaviour:
     shotSpd: 1
     hp: 0
     regeneration: 0
-    killMoney: 1
+    moneyBonus: 0
     waveMoney: 10
+  dmgTxt: {fileID: 793412208}
   hpTxt: {fileID: 375118240}
   hpImg: {fileID: 1229789084}
-  MaxHP: 10
-  dmgTxt: {fileID: 793412208}
 --- !u!50 &183322300
 Rigidbody2D:
   serializedVersion: 4
@@ -1447,6 +1446,12 @@ MonoBehaviour:
   rightInformation: {fileID: 1414463386}
   rightValue: {fileID: 387996976}
   rightPrice: {fileID: 612968523}
+  upgradeTypeInformationBG: {fileID: 1236931389}
+  upgradeTypeInformationBGColor:
+  - {r: 0.007843138, g: 0.67058825, b: 0.9215687, a: 1}
+  - {r: 0.007843147, g: 0.92156863, b: 0.10109543, a: 1}
+  - {r: 0.92156863, g: 0.59778506, b: 0.007843147, a: 1}
+  upgradeTypeInformationTxt: {fileID: 1452905890}
 --- !u!1 &335493411
 GameObject:
   m_ObjectHideFlags: 0
