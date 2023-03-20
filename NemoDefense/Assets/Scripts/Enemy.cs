@@ -6,7 +6,7 @@ public class Enemy : MonoBehaviour
 {
     public State state;
 
-    Transform target => Player.Instance.gameObject.transform;
+    private Transform target;
 
     private bool isMove;
 
@@ -20,6 +20,11 @@ public class Enemy : MonoBehaviour
 
             if (state.hp <= 0) Die();
         }
+    }
+
+    private void Start()
+    {
+        target = Player.Instance.gameObject.transform;
     }
 
     private void Update()
