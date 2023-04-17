@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
 using System.Linq;
-using static UnityEngine.GraphicsBuffer;
 
 public class Shot : MonoBehaviour
 {
@@ -51,6 +50,7 @@ public class Shot : MonoBehaviour
         bullet.SetBullet(Player.Instance.state.dmg, bulletSpd, shotPos.forward);
     }
 
+    //거리 순서로 정렬
     private GameObject DistanceEnemy()
     {
         var neareastObject = enemyList

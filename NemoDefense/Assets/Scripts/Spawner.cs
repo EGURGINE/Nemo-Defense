@@ -65,8 +65,11 @@ public class Spawner : Singleton<Spawner>
         obj.SetActive(false);
     }
 
+    
     private void Pop()
     {
+        //플레이어 기준 랜덤한 지름에 스폰
+        
         Vector3 playerPos = Player.Instance.gameObject.transform.position;
         float angle = Random.Range(0, 360);
         posX = playerPos.x + Mathf.Cos(angle) * spRadius;
@@ -84,6 +87,7 @@ public class Spawner : Singleton<Spawner>
         Pop();
     }
 
+    // 적 능력치 증가
     public void EnemyUp()
     {
         enemy_dmg += 0.1f;
@@ -91,6 +95,7 @@ public class Spawner : Singleton<Spawner>
         TextSet();
     }
 
+    // 스폰하는 적 스텟 표시
     private void TextSet() 
     {
         waveEnemyDmgTxt.text = enemy_dmg.ToString();

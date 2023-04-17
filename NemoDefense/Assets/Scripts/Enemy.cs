@@ -27,6 +27,7 @@ public class Enemy : MonoBehaviour
         target = Player.Instance.gameObject.transform;
     }
 
+    // 플레이어 방향으로 이동
     private void Update()
     {
         if (isMove == false) return;

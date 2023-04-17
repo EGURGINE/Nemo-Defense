@@ -13,8 +13,6 @@ public enum UpgradeType
     END
 }
 
-
-
 public class AbilityUpgrade : MonoBehaviour
 {
     private UpgradeType type = UpgradeType.ATK;
@@ -45,7 +43,6 @@ public class AbilityUpgrade : MonoBehaviour
     {
         leftBtn.onClick.AddListener(() => LeftBtnSet());
         rightBtn.onClick.AddListener(() => RightBtnSet());
-
 
         StartSet();
         WndSet();
